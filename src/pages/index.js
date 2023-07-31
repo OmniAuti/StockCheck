@@ -13,7 +13,7 @@ const Home = () => {
   const [trigger, setTrigger] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
 
-  const [dateFinder, setDateFinder] = useState(0);
+  const [dateFinder, setDateFinder] = useState(1);
   const [productType, setProductType] = useState("flower");
   const [historyDate, setHistoryDate] = useState("5");
   useEffect(() => {
