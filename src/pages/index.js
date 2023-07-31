@@ -13,29 +13,311 @@ const Home = () => {
   const [trigger, setTrigger] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
 
-  const [dateFinder, setDateFinder] = useState(1);
   const [productType, setProductType] = useState("flower");
   const [historyDate, setHistoryDate] = useState("5");
   useEffect(() => {
-    getData();
+    getData(0);
   }, []);
 
-  const getData = async () => {
+  const getData = async (dateFinder) => {
+    var num = dateFinder;
+
     const date = new Date();
-    let currentDay = String(date.getDate()).padStart(2, "0");
-    let yesterday = String(date.getDate() - dateFinder).padStart(2, "0");
-    let dayBeforeYesterday = String(date.getDate() - dateFinder - 1).padStart(
-      2,
-      "0"
-    );
-    let dayFourAgo = String(date.getDate() - dateFinder - 2).padStart(2, "0");
-    let dayFiveAgo = String(date.getDate() - dateFinder - 3).padStart(2, "0");
+
     let currentMonth = String(date.getMonth() + 1).padStart(2, "0");
     let currentYear = date.getFullYear();
+    let currentDay = String(date.getDate() - dateFinder).padStart(2, "0");
+    //
+    if (currentDay == 0) {
+      currentMonth = currentMonth - 1;
+      if (currentMonth == 1) {
+        currentDay = 31;
+        yesterday = 30;
+        dayThreeAgo = 29;
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      } else if (currentMonth == 2) {
+        currentDay = 28;
+        yesterday = 27;
+        dayThreeAgo = 26;
+        dayFourAgo = 25;
+        dayFiveAgo = 24;
+      } else if (currentMonth == 3) {
+        currentDay = 31;
+        yesterday = 30;
+        dayThreeAgo = 29;
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      } else if (currentMonth == 4) {
+        currentDay = 30;
+        yesterday = 29;
+        dayThreeAgo = 28;
+        dayFourAgo = 27;
+        dayFiveAgo = 26;
+      } else if (currentMonth == 5) {
+        currentDay = 31;
+        yesterday = 30;
+        dayThreeAgo = 29;
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      } else if (currentMonth == 6) {
+        currentDay = 30;
+        yesterday = 29;
+        dayThreeAgo = 28;
+        dayFourAgo = 27;
+        dayFiveAgo = 26;
+      } else if (currentMonth == 7) {
+        currentDay = 31;
+        yesterday = 30;
+        dayThreeAgo = 29;
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      } else if (currentMonth == 8) {
+        currentDay = 31;
+        yesterday = 30;
+        dayThreeAgo = 29;
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      } else if (currentMonth == 9) {
+        currentDay = 30;
+        yesterday = 29;
+        dayThreeAgo = 28;
+        dayFourAgo = 27;
+        dayFiveAgo = 26;
+      } else if (currentMonth == 10) {
+        currentDay = 31;
+        yesterday = 30;
+        dayThreeAgo = 29;
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      } else if (currentMonth == 11) {
+        currentDay = 30;
+        yesterday = 29;
+        dayThreeAgo = 28;
+        dayFourAgo = 27;
+        dayFiveAgo = 26;
+      } else if (currentMonth == 12) {
+        currentDay = 31;
+        yesterday = 30;
+        dayThreeAgo = 29;
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      }
+    }
+    //
     let currentDate = `${currentMonth}-${currentDay}-${currentYear}`;
+    //
+    await fetch(`dispensary_data/Dispensary-Scrape-${currentDate}.json`)
+      .then((res) => {
+        if (res.status === 404) {
+          console.log("TODAY DATA NOT UPLOADED");
+          return getData(num + 1);
+        }
+      })
+      .catch(() => {
+        console.log("TODAY DATA NOT UPLOADED");
+        return;
+      });
+
+    let yesterday = String(date.getDate() - dateFinder - 1).padStart(2, "0");
+    let dayThreeAgo = String(yesterday - dateFinder - 2).padStart(2, "0");
+    let dayFourAgo = String(yesterday - dateFinder - 3).padStart(2, "0");
+    let dayFiveAgo = String(yesterday - dateFinder - 4).padStart(2, "0");
+
+    if (yesterday == 0) {
+      currentMonth = currentMonth - 1;
+      if (currentMonth == 1) {
+        yesterday = 31;
+        dayThreeAgo = 30;
+        dayFourAgo = 29;
+        dayFiveAgo = 28;
+      } else if (currentMonth == 2) {
+        yesterday = 28;
+        dayThreeAgo = 27;
+        dayFourAgo = 26;
+        dayFiveAgo = 25;
+      } else if (currentMonth == 3) {
+        yesterday = 31;
+        dayThreeAgo = 30;
+        dayFourAgo = 29;
+        dayFiveAgo = 28;
+      } else if (currentMonth == 4) {
+        yesterday = 30;
+        dayThreeAgo = 29;
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      } else if (currentMonth == 5) {
+        yesterday = 31;
+        dayThreeAgo = 30;
+        dayFourAgo = 29;
+        dayFiveAgo = 28;
+      } else if (currentMonth == 6) {
+        yesterday = 30;
+        dayThreeAgo = 29;
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      } else if (currentMonth == 7) {
+        yesterday = 31;
+        dayThreeAgo = 30;
+        dayFourAgo = 29;
+        dayFiveAgo = 28;
+      } else if (currentMonth == 8) {
+        yesterday = 31;
+        dayThreeAgo = 30;
+        dayFourAgo = 29;
+        dayFiveAgo = 28;
+      } else if (currentMonth == 9) {
+        yesterday = 30;
+        dayThreeAgo = 29;
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      } else if (currentMonth == 10) {
+        yesterday = 31;
+        dayThreeAgo = 30;
+        dayFourAgo = 29;
+        dayFiveAgo = 28;
+      } else if (currentMonth == 11) {
+        yesterday = 30;
+        dayThreeAgo = 29;
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      } else if (currentMonth == 12) {
+        yesterday = 31;
+        dayThreeAgo = 30;
+        dayFourAgo = 29;
+        dayFiveAgo = 28;
+      }
+    }
+
     let yesterdayDate = `${currentMonth}-${yesterday}-${currentYear}`;
-    let beforeYesterdayDate = `${currentMonth}-${dayBeforeYesterday}-${currentYear}`;
+
+    if (dayThreeAgo == 0) {
+      currentMonth = currentMonth - 1;
+      if (currentMonth == 1) {
+        dayThreeAgo = 31;
+        dayFourAgo = 30;
+        dayFiveAgo = 29;
+      } else if (currentMonth == 2) {
+        dayThreeAgo = 28;
+        dayFourAgo = 27;
+        dayFiveAgo = 26;
+      } else if (currentMonth == 3) {
+        dayThreeAgo = 31;
+        dayFourAgo = 30;
+        dayFiveAgo = 29;
+      } else if (currentMonth == 4) {
+        dayThreeAgo = 30;
+        dayFourAgo = 29;
+        dayFiveAgo = 28;
+      } else if (currentMonth == 5) {
+        dayThreeAgo = 31;
+        dayFourAgo = 30;
+        dayFiveAgo = 29;
+      } else if (currentMonth == 6) {
+        dayThreeAgo = 30;
+        dayFourAgo = 29;
+        dayFiveAgo = 28;
+      } else if (currentMonth == 7) {
+        dayThreeAgo = 31;
+        dayFourAgo = 30;
+        dayFiveAgo = 29;
+      } else if (currentMonth == 8) {
+        dayThreeAgo = 31;
+        dayFourAgo = 30;
+        dayFiveAgo = 29;
+      } else if (currentMonth == 9) {
+        dayThreeAgo = 30;
+        dayFourAgo = 29;
+        dayFiveAgo = 28;
+      } else if (currentMonth == 10) {
+        dayThreeAgo = 31;
+        dayFourAgo = 30;
+        dayFiveAgo = 29;
+      } else if (currentMonth == 11) {
+        dayThreeAgo = 30;
+        dayFourAgo = 29;
+        dayFiveAgo = 28;
+      } else if (currentMonth == 12) {
+        dayThreeAgo = 31;
+        dayFourAgo = 30;
+        dayFiveAgo = 29;
+      }
+    }
+
+    let beforeYesterdayDate = `${currentMonth}-${dayThreeAgo}-${currentYear}`;
+
+    if (dayFourAgo == 0) {
+      currentMonth = currentMonth - 1;
+      if (currentMonth == 1) {
+        dayFourAgo = 31;
+        dayFiveAgo = 30;
+      } else if (currentMonth == 2) {
+        dayFourAgo = 28;
+        dayFiveAgo = 27;
+      } else if (currentMonth == 3) {
+        dayFourAgo = 31;
+        dayFiveAgo = 30;
+      } else if (currentMonth == 4) {
+        dayFourAgo = 30;
+        dayFiveAgo = 29;
+      } else if (currentMonth == 5) {
+        dayFourAgo = 31;
+        dayFiveAgo = 30;
+      } else if (currentMonth == 6) {
+        dayFourAgo = 30;
+        dayFiveAgo = 29;
+      } else if (currentMonth == 7) {
+        dayFourAgo = 31;
+        dayFiveAgo = 30;
+      } else if (currentMonth == 8) {
+        dayFourAgo = 31;
+        dayFiveAgo = 30;
+      } else if (currentMonth == 9) {
+        dayFourAgo = 30;
+        dayFiveAgo = 29;
+      } else if (currentMonth == 10) {
+        dayFourAgo = 31;
+        dayFiveAgo = 30;
+      } else if (currentMonth == 11) {
+        dayFourAgo = 30;
+        dayFiveAgo = 29;
+      } else if (currentMonth == 12) {
+        dayFourAgo = 31;
+        dayFiveAgo = 30;
+      }
+    }
+
     let fourAgoDate = `${currentMonth}-${dayFourAgo}-${currentYear}`;
+
+    if (dayFiveAgo == 0) {
+      currentMonth = currentMonth - 1;
+      if (currentMonth == 1) {
+        dayFiveAgo = 31;
+      } else if (currentMonth == 2) {
+        dayFiveAgo = 28;
+      } else if (currentMonth == 3) {
+        dayFiveAgo = 31;
+      } else if (currentMonth == 4) {
+        dayFiveAgo = 30;
+      } else if (currentMonth == 5) {
+        dayFiveAgo = 31;
+      } else if (currentMonth == 6) {
+        dayFiveAgo = 30;
+      } else if (currentMonth == 7) {
+        dayFiveAgo = 31;
+      } else if (currentMonth == 8) {
+        dayFiveAgo = 31;
+      } else if (currentMonth == 9) {
+        dayFiveAgo = 30;
+      } else if (currentMonth == 10) {
+        dayFiveAgo = 31;
+      } else if (currentMonth == 11) {
+        dayFiveAgo = 30;
+      } else if (currentMonth == 12) {
+        dayFiveAgo = 31;
+      }
+    }
+
     let fiveAgoDate = `${currentMonth}-${dayFiveAgo}-${currentYear}`;
 
     // console.log(
@@ -45,43 +327,42 @@ const Home = () => {
     //   fourAgoDate,
     //   fiveAgoDate
     // );
-    console.log(dateFinder);
     // CURRENT
+    //
     await fetch(`dispensary_data/Dispensary-Scrape-${currentDate}.json`)
       .then((res) => res.json())
       .then((data) => {
         setDays(data);
       });
-    console.log("one");
+    console.log(currentDate, "Most Recent Data Date");
     // YESTERDAY
     await fetch(`dispensary_data/Dispensary-Scrape-${yesterdayDate}.json`)
       .then((res) => res.json())
       .then((data) => {
         setYesterday(data);
       });
-    console.log("two");
+    console.log(yesterdayDate);
     // DAY BEFORE YESTERDAY
     await fetch(`dispensary_data/Dispensary-Scrape-${beforeYesterdayDate}.json`)
       .then((res) => res.json())
       .then((data) => {
         setBeforeYesterday(data);
       });
-    console.log("three");
-
+    console.log(beforeYesterdayDate);
     // FOUR DAYS AGO
     await fetch(`dispensary_data/Dispensary-Scrape-${fourAgoDate}.json`)
       .then((res) => res.json())
       .then((data) => {
         setFourDaysAgo(data);
       });
-    console.log("four");
+    console.log(fourAgoDate);
     // FIVE DAYS AGO
     await fetch(`dispensary_data/Dispensary-Scrape-${fiveAgoDate}.json`)
       .then((res) => res.json())
       .then((data) => {
         setFiveDaysAgo(data);
       });
-    console.log("five");
+    console.log(fiveAgoDate);
     setTrigger(!trigger);
     // // CURRENT
     // await fetch(`dispensary_data/Dispensary-Scrape-07-20-2023.json`)
