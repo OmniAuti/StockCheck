@@ -13,7 +13,7 @@ const Home = () => {
   const [trigger, setTrigger] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
 
-  const [dateFinder, setDateFinder] = useState(1);
+  const [dateFinder, setDateFinder] = useState(0);
   const [productType, setProductType] = useState("flower");
   const [historyDate, setHistoryDate] = useState("5");
   useEffect(() => {
@@ -22,14 +22,14 @@ const Home = () => {
 
   const getData = async () => {
     const date = new Date();
-    let currentDay = String(date.getDate() - 1).padStart(2, "0");
-    let yesterday = String(date.getDate() - dateFinder - 1).padStart(2, "0");
-    let dayBeforeYesterday = String(date.getDate() - dateFinder - 2).padStart(
+    let currentDay = String(date.getDate()).padStart(2, "0");
+    let yesterday = String(date.getDate() - dateFinder).padStart(2, "0");
+    let dayBeforeYesterday = String(date.getDate() - dateFinder - 1).padStart(
       2,
       "0"
     );
-    let dayFourAgo = String(date.getDate() - dateFinder - 3).padStart(2, "0");
-    let dayFiveAgo = String(date.getDate() - dateFinder - 4).padStart(2, "0");
+    let dayFourAgo = String(date.getDate() - dateFinder - 2).padStart(2, "0");
+    let dayFiveAgo = String(date.getDate() - dateFinder - 3).padStart(2, "0");
     let currentMonth = String(date.getMonth() + 1).padStart(2, "0");
     let currentYear = date.getFullYear();
     let currentDate = `${currentMonth}-${currentDay}-${currentYear}`;
@@ -45,7 +45,7 @@ const Home = () => {
     //   fourAgoDate,
     //   fiveAgoDate
     // );
-
+    console.log(dateFinder);
     // CURRENT
     await fetch(`dispensary_data/Dispensary-Scrape-${currentDate}.json`)
       .then((res) => res.json())
