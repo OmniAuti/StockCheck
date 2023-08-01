@@ -28,75 +28,78 @@ const Home = () => {
     let currentYear = date.getFullYear();
     let currentDay = String(date.getDate() - dateFinder).padStart(2, "0");
     //
-    if (currentDay == 0) {
+    if (currentDay == "00") {
       currentMonth = currentMonth - 1;
-      if (currentMonth == 1) {
+      if (currentMonth < 10) {
+        currentMonth = String(currentMonth).padStart(2, "0");
+      }
+      if (currentMonth == "01") {
         currentDay = 31;
         yesterday = 30;
         dayThreeAgo = 29;
         dayFourAgo = 28;
         dayFiveAgo = 27;
-      } else if (currentMonth == 2) {
+      } else if (currentMonth == "02") {
         currentDay = 28;
         yesterday = 27;
         dayThreeAgo = 26;
         dayFourAgo = 25;
         dayFiveAgo = 24;
-      } else if (currentMonth == 3) {
+      } else if (currentMonth == "03") {
         currentDay = 31;
         yesterday = 30;
         dayThreeAgo = 29;
         dayFourAgo = 28;
         dayFiveAgo = 27;
-      } else if (currentMonth == 4) {
+      } else if (currentMonth == "04") {
         currentDay = 30;
         yesterday = 29;
         dayThreeAgo = 28;
         dayFourAgo = 27;
         dayFiveAgo = 26;
-      } else if (currentMonth == 5) {
+      } else if (currentMonth == "05") {
         currentDay = 31;
         yesterday = 30;
         dayThreeAgo = 29;
         dayFourAgo = 28;
         dayFiveAgo = 27;
-      } else if (currentMonth == 6) {
+      } else if (currentMonth == "06") {
         currentDay = 30;
         yesterday = 29;
         dayThreeAgo = 28;
         dayFourAgo = 27;
         dayFiveAgo = 26;
-      } else if (currentMonth == 7) {
+      } else if (currentMonth == "07") {
         currentDay = 31;
         yesterday = 30;
         dayThreeAgo = 29;
         dayFourAgo = 28;
         dayFiveAgo = 27;
-      } else if (currentMonth == 8) {
+      } else if (currentMonth == "08") {
         currentDay = 31;
         yesterday = 30;
         dayThreeAgo = 29;
         dayFourAgo = 28;
         dayFiveAgo = 27;
-      } else if (currentMonth == 9) {
+      } else if (currentMonth == "09") {
         currentDay = 30;
         yesterday = 29;
         dayThreeAgo = 28;
         dayFourAgo = 27;
         dayFiveAgo = 26;
-      } else if (currentMonth == 10) {
+      } else if (currentMonth == "10") {
         currentDay = 31;
         yesterday = 30;
         dayThreeAgo = 29;
         dayFourAgo = 28;
         dayFiveAgo = 27;
-      } else if (currentMonth == 11) {
+      } else if (currentMonth == "11") {
         currentDay = 30;
         yesterday = 29;
         dayThreeAgo = 28;
         dayFourAgo = 27;
         dayFiveAgo = 26;
-      } else if (currentMonth == 12) {
+      } else if (currentMonth == "12") {
         currentDay = 31;
         yesterday = 30;
         dayThreeAgo = 29;
@@ -124,64 +127,67 @@ const Home = () => {
     let dayFourAgo = String(yesterday - dateFinder - 3).padStart(2, "0");
     let dayFiveAgo = String(yesterday - dateFinder - 4).padStart(2, "0");
 
-    if (yesterday == 0) {
+    if (yesterday == "00") {
       currentMonth = currentMonth - 1;
-      if (currentMonth == 1) {
+      if (currentMonth < 10) {
+        currentMonth = String(currentMonth).padStart(2, "0");
+      }
+      if (currentMonth == "01") {
         yesterday = 31;
         dayThreeAgo = 30;
         dayFourAgo = 29;
         dayFiveAgo = 28;
-      } else if (currentMonth == 2) {
+      } else if (currentMonth == "02") {
         yesterday = 28;
         dayThreeAgo = 27;
         dayFourAgo = 26;
         dayFiveAgo = 25;
-      } else if (currentMonth == 3) {
+      } else if (currentMonth == "03") {
         yesterday = 31;
         dayThreeAgo = 30;
         dayFourAgo = 29;
         dayFiveAgo = 28;
-      } else if (currentMonth == 4) {
+      } else if (currentMonth == "04") {
         yesterday = 30;
         dayThreeAgo = 29;
         dayFourAgo = 28;
         dayFiveAgo = 27;
-      } else if (currentMonth == 5) {
+      } else if (currentMonth == "05") {
         yesterday = 31;
         dayThreeAgo = 30;
         dayFourAgo = 29;
         dayFiveAgo = 28;
-      } else if (currentMonth == 6) {
+      } else if (currentMonth == "06") {
         yesterday = 30;
         dayThreeAgo = 29;
         dayFourAgo = 28;
         dayFiveAgo = 27;
-      } else if (currentMonth == 7) {
+      } else if (currentMonth == "07") {
         yesterday = 31;
         dayThreeAgo = 30;
         dayFourAgo = 29;
         dayFiveAgo = 28;
-      } else if (currentMonth == 8) {
+      } else if (currentMonth == "08") {
         yesterday = 31;
         dayThreeAgo = 30;
         dayFourAgo = 29;
         dayFiveAgo = 28;
-      } else if (currentMonth == 9) {
+      } else if (currentMonth == "09") {
         yesterday = 30;
         dayThreeAgo = 29;
         dayFourAgo = 28;
         dayFiveAgo = 27;
-      } else if (currentMonth == 10) {
+      } else if (currentMonth == "10") {
         yesterday = 31;
         dayThreeAgo = 30;
         dayFourAgo = 29;
         dayFiveAgo = 28;
-      } else if (currentMonth == 11) {
+      } else if (currentMonth == "11") {
         yesterday = 30;
         dayThreeAgo = 29;
         dayFourAgo = 28;
         dayFiveAgo = 27;
-      } else if (currentMonth == 12) {
+      } else if (currentMonth == "12") {
         yesterday = 31;
         dayThreeAgo = 30;
         dayFourAgo = 29;
@@ -191,53 +197,56 @@ const Home = () => {
 
     let yesterdayDate = `${currentMonth}-${yesterday}-${currentYear}`;
 
-    if (dayThreeAgo == 0) {
+    if (dayThreeAgo == "00") {
       currentMonth = currentMonth - 1;
-      if (currentMonth == 1) {
+      if (currentMonth < 10) {
+        currentMonth = String(currentMonth).padStart(2, "0");
+      }
+      if (currentMonth == "01") {
         dayThreeAgo = 31;
         dayFourAgo = 30;
         dayFiveAgo = 29;
-      } else if (currentMonth == 2) {
+      } else if (currentMonth == "02") {
         dayThreeAgo = 28;
         dayFourAgo = 27;
         dayFiveAgo = 26;
-      } else if (currentMonth == 3) {
+      } else if (currentMonth == "03") {
         dayThreeAgo = 31;
         dayFourAgo = 30;
         dayFiveAgo = 29;
-      } else if (currentMonth == 4) {
+      } else if (currentMonth == "04") {
         dayThreeAgo = 30;
         dayFourAgo = 29;
         dayFiveAgo = 28;
-      } else if (currentMonth == 5) {
+      } else if (currentMonth == "05") {
         dayThreeAgo = 31;
         dayFourAgo = 30;
         dayFiveAgo = 29;
-      } else if (currentMonth == 6) {
+      } else if (currentMonth == "06") {
         dayThreeAgo = 30;
         dayFourAgo = 29;
         dayFiveAgo = 28;
-      } else if (currentMonth == 7) {
+      } else if (currentMonth == "07") {
         dayThreeAgo = 31;
         dayFourAgo = 30;
         dayFiveAgo = 29;
-      } else if (currentMonth == 8) {
+      } else if (currentMonth == "08") {
         dayThreeAgo = 31;
         dayFourAgo = 30;
         dayFiveAgo = 29;
-      } else if (currentMonth == 9) {
+      } else if (currentMonth == "09") {
         dayThreeAgo = 30;
         dayFourAgo = 29;
         dayFiveAgo = 28;
-      } else if (currentMonth == 10) {
+      } else if (currentMonth == "10") {
         dayThreeAgo = 31;
         dayFourAgo = 30;
         dayFiveAgo = 29;
-      } else if (currentMonth == 11) {
+      } else if (currentMonth == "11") {
         dayThreeAgo = 30;
         dayFourAgo = 29;
         dayFiveAgo = 28;
-      } else if (currentMonth == 12) {
+      } else if (currentMonth == "12") {
         dayThreeAgo = 31;
         dayFourAgo = 30;
         dayFiveAgo = 29;
@@ -246,42 +255,45 @@ const Home = () => {
 
     let beforeYesterdayDate = `${currentMonth}-${dayThreeAgo}-${currentYear}`;
 
-    if (dayFourAgo == 0) {
+    if (dayFourAgo == "00") {
       currentMonth = currentMonth - 1;
-      if (currentMonth == 1) {
+      if (currentMonth < 10) {
+        currentMonth = String(currentMonth).padStart(2, "0");
+      }
+      if (currentMonth == "01") {
         dayFourAgo = 31;
         dayFiveAgo = 30;
-      } else if (currentMonth == 2) {
+      } else if (currentMonth == "02") {
         dayFourAgo = 28;
         dayFiveAgo = 27;
-      } else if (currentMonth == 3) {
+      } else if (currentMonth == "03") {
         dayFourAgo = 31;
         dayFiveAgo = 30;
-      } else if (currentMonth == 4) {
+      } else if (currentMonth == "04") {
         dayFourAgo = 30;
         dayFiveAgo = 29;
-      } else if (currentMonth == 5) {
+      } else if (currentMonth == "05") {
         dayFourAgo = 31;
         dayFiveAgo = 30;
-      } else if (currentMonth == 6) {
+      } else if (currentMonth == "06") {
         dayFourAgo = 30;
         dayFiveAgo = 29;
-      } else if (currentMonth == 7) {
+      } else if (currentMonth == "07") {
         dayFourAgo = 31;
         dayFiveAgo = 30;
-      } else if (currentMonth == 8) {
+      } else if (currentMonth == "08") {
         dayFourAgo = 31;
         dayFiveAgo = 30;
-      } else if (currentMonth == 9) {
+      } else if (currentMonth == "09") {
         dayFourAgo = 30;
         dayFiveAgo = 29;
-      } else if (currentMonth == 10) {
+      } else if (currentMonth == "10") {
         dayFourAgo = 31;
         dayFiveAgo = 30;
-      } else if (currentMonth == 11) {
+      } else if (currentMonth == "11") {
         dayFourAgo = 30;
         dayFiveAgo = 29;
-      } else if (currentMonth == 12) {
+      } else if (currentMonth == "12") {
         dayFourAgo = 31;
         dayFiveAgo = 30;
       }
@@ -289,44 +301,47 @@ const Home = () => {
 
     let fourAgoDate = `${currentMonth}-${dayFourAgo}-${currentYear}`;
 
-    if (dayFiveAgo == 0) {
+    if (dayFiveAgo == "00") {
       currentMonth = currentMonth - 1;
-      if (currentMonth == 1) {
+      if (currentMonth < 10) {
+        currentMonth = String(currentMonth).padStart(2, "0");
+      }
+      if (currentMonth == "01") {
         dayFiveAgo = 31;
-      } else if (currentMonth == 2) {
+      } else if (currentMonth == "02") {
         dayFiveAgo = 28;
-      } else if (currentMonth == 3) {
+      } else if (currentMonth == "03") {
         dayFiveAgo = 31;
-      } else if (currentMonth == 4) {
+      } else if (currentMonth == "04") {
         dayFiveAgo = 30;
-      } else if (currentMonth == 5) {
+      } else if (currentMonth == "05") {
         dayFiveAgo = 31;
-      } else if (currentMonth == 6) {
+      } else if (currentMonth == "06") {
         dayFiveAgo = 30;
-      } else if (currentMonth == 7) {
+      } else if (currentMonth == "07") {
         dayFiveAgo = 31;
-      } else if (currentMonth == 8) {
+      } else if (currentMonth == "08") {
         dayFiveAgo = 31;
-      } else if (currentMonth == 9) {
+      } else if (currentMonth == "09") {
         dayFiveAgo = 30;
-      } else if (currentMonth == 10) {
+      } else if (currentMonth == "10") {
         dayFiveAgo = 31;
-      } else if (currentMonth == 11) {
+      } else if (currentMonth == "11") {
         dayFiveAgo = 30;
-      } else if (currentMonth == 12) {
+      } else if (currentMonth == "12") {
         dayFiveAgo = 31;
       }
     }
 
     let fiveAgoDate = `${currentMonth}-${dayFiveAgo}-${currentYear}`;
 
-    // console.log(
-    //   currentDate,
-    //   yesterdayDate,
-    //   beforeYesterdayDate,
-    //   fourAgoDate,
-    //   fiveAgoDate
-    // );
+    console.log(
+      currentDate,
+      yesterdayDate,
+      beforeYesterdayDate,
+      fourAgoDate,
+      fiveAgoDate
+    );
     // CURRENT
     //
     await fetch(`dispensary_data/Dispensary-Scrape-${currentDate}.json`)
